@@ -1,0 +1,10 @@
+{
+  "appId": "com.dominio.meupeso",
+  "appName": "MeuPeso",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}
