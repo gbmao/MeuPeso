@@ -56,3 +56,18 @@ Sei que existem formas mais simples/práticas de armazenar dados TÃO simples co
 eu trabalho com banco relacional no meu estágio e toda oportunidade que tenho de treinar com ele, vou estar usando.
 E além disso, no fundo do meu coração sempre que começo um projeto eu imagino na sua capacidade de crescer, caso esse seja o caso do MeuPeso, acredito que deixar a lógica dentro do banco seria a melhor opção. 
 
+# Arquitetura
+
+## clients
+
+- responsável por receber as informações e enviar para o service
+
+## services
+
+- camada com as regras de negocio
+- valida o valor do peso
+- calcula os ganhos/perde
+
+## repository
+
+- basicamente vai ser quem vai conversar com o SQLite
