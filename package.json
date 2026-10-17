@@ -10,17 +10,19 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "android:sync": "npm run build && cap sync android",
+    "android:run": "npm run build && cap sync android && ./android/gradlew -p android :app:assembleDebug && native-run android --app android/app/build/outputs/apk/debug/app-debug.apk"
   },
   "dependencies": {
     "@capacitor-community/sqlite": "^8.1.1",
-    "@capacitor/android": "^8.5.3",
-    "@capacitor/camera": "latest",
-    "@capacitor/core": "latest",
-    "@capacitor/splash-screen": "latest"
+    "@capacitor/android": "8.5.3",
+    "@capacitor/camera": "8.2.6",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/splash-screen": "8.0.2"
   },
   "devDependencies": {
-    "@capacitor/cli": "latest",
+    "@capacitor/cli": "8.5.3",
     "vite": "^7.3.1"
   },
   "author": "",

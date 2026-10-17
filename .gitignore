@@ -1,4 +1,7 @@
 .idea/
+!.idea/
+.idea/*
+!.idea/gradle.xml
 node_modules/
 .vscode/
 *.map

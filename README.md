@@ -71,3 +71,28 @@ E além disso, no fundo do meu coração sempre que começo um projeto eu imagin
 ## repository
 
 - basicamente vai ser quem vai conversar com o SQLite
+
+# Android
+
+O projeto usa Capacitor 8, Android Gradle Plugin 8.13 e Java 21. No Android Studio, selecione o Gradle Wrapper do projeto e um JDK 21 ou mais novo nas configurações de Gradle. O Gradle 9.6 não é compatível com o AGP 8.13; o wrapper do projeto está na versão 8.14.3.
+
+Ao compilar pelo terminal, configure `JAVA_HOME` para esse mesmo JDK e `ANDROID_HOME` para o Android SDK. O terminal usa `JAVA_HOME`; a configuração de JDK do Android Studio só vale para builds iniciados pela IDE.
+
+Com o Android Studio instalado, `JAVA_HOME` e `ANDROID_HOME` configurados para JDK 21 e Android SDK, e o celular conectado com depuração USB habilitada, compile, instale e abra o app com:
+
+```bash
+npm ci
+npm run android:run
+```
+
+Se houver mais de um dispositivo conectado, indique o serial do celular:
+
+```bash
+npm run android:run -- --target=SERIAL_DO_CELULAR
+```
+
+Para apenas gerar/sincronizar os arquivos Android antes de abrir o projeto no Android Studio:
+
+```bash
+npm run android:sync
+```
