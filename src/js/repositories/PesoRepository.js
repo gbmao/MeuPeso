@@ -1,3 +1,5 @@
+import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
+
 export class PesoRepository {
   constructor() {
     this.sqlite = new SQLiteConnection(CapacitorSQLite);
@@ -13,13 +15,12 @@ export class PesoRepository {
   }
 
   async abrirBanco() {
-    const banco = await this.sqlite.createConnection(
-      'meu_peso',
-      false,
-      'no-encryption',
-      1,
-      false
-    );
+    const consistencia = await this.sqlite.checkConnectionsConsistency();
+    const conexaoExiste = await this.sqlite.isConnection('meu_peso', false);
+
+    const banco = consistencia.result && conexaoExiste.result
+      ? await this.sqlite.retrieveConnection('meu_peso', false)
+      : await this.sqlite.createConnection('meu_peso', false, 'no-encryption', 1, false);
 
     await banco.open();
 
@@ -34,13 +35,13 @@ export class PesoRepository {
     return banco;
   }
 
-  async salvar(peso) {
+  async salvar(peso, recebidoEm) {
     const banco = await this.conectar();
 
     await banco.run(
       `INSERT INTO pesagens (peso, recebido_em)
        VALUES (?, ?)`,
-      [peso, new Date().toISOString()]
+      [peso, recebidoEm]
     );
   }
 
